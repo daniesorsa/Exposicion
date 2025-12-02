@@ -1,20 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package exposicion;
-
-/**
- *
- * @author sorto
- */
+import java.util.Scanner;
 public class Exposicion {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese la cantidad de salones: ");
+        Salon[] salones = new Salon[Salon.validacion()];
+        
+        System.out.println("Ingrese el salon a editar: ");
+        int salonActual = Salon.validacion(0,salones.length);
+        
+        System.out.print("Ingrese la cantidad de estudiantes: ");
+        Alumno[] alumnos = new Alumno[Salon.validacion()];
+        
     }
     
 }
