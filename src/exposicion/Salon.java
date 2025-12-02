@@ -53,7 +53,11 @@ public class Salon {
     // metodos
     @Override
     public String toString() {
-        return "Salon{" + "Seccion: " + seccion + "\n     CantidadAlumnos: " + cantidadAlumnos + "\n     Maestro: " + maestro + "\n     Alumnos: " + alumnos + '}';
+        String res = "Salon{" + "Seccion: " + seccion + "\n     CantidadAlumnos: " + cantidadAlumnos + "\n     Maestro: " + maestro + "\n     Alumnos:  }";
+        for(int i = 0; i < alumnos.length; i++) {
+            res += "  " + i + ") " + alumnos[i] + "\n";
+        }
+        return res;
     }
 
     
