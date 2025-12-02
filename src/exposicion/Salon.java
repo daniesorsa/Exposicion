@@ -6,7 +6,7 @@ public class Salon {
     int seccion;
     String maestro;
     int cantidadAlumnos;
-    Alumno[] alumnos = new Alumno[cantidadAlumnos];
+    Alumno[] alumnos;
 
     // constructor
     public Salon(int seccion, int cantidadAlumnos, String maestro, Alumno[] alumnos) {
@@ -53,9 +53,11 @@ public class Salon {
     // metodos
     @Override
     public String toString() {
-        String res = "Salon{" + "Seccion: " + seccion + "\n     CantidadAlumnos: " + cantidadAlumnos + "\n     Maestro: " + maestro + "\n     Alumnos:  }";
+        String res = "Seccion: " + seccion + "\n     CantidadAlumnos: " + cantidadAlumnos + "\n     Maestro: " + maestro + "\n     Cantidad de alumnos: " + cantidadAlumnos + "\nLista de alumnos:\n";
         for(int i = 0; i < alumnos.length; i++) {
-            res += "  " + i + ") " + alumnos[i] + "\n";
+            if(alumnos[i] != null) {
+                res += "  " + i + ") " + alumnos[i] + "\n";
+            }
         }
         return res;
     }
@@ -71,6 +73,7 @@ public class Salon {
             System.out.print("Opcion no valida intente de nuevo: ");
             x = sc.nextInt();
         }
+        sc.nextLine();
         return x;
     }
     public static int validacion(int x, int y) {
@@ -81,6 +84,7 @@ public class Salon {
             System.out.print("Opcion no valida intente de nuevo: ");
             z = sc.nextInt();
         }
+        sc.nextLine();
         return z;
     }
 }

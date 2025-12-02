@@ -14,7 +14,7 @@ public class Exposicion {
             System.out.println("1) Modificar informacion");
             System.out.println("2)Mostrar informacion");
             System.out.println("0) Salir");
-            selMenu = Salon.validacion();
+            selMenu = Salon.validacion(0,2);
             switch(selMenu) {
                 case 1:
                     if(salones == null) {
@@ -31,7 +31,8 @@ public class Exposicion {
                         }
                         else {
                             System.out.println("Salon " + i + ": Con la siguiente informacion:");
-                            System.out.println(salones[i]);
+                            System.out.println("Seccion: " + salones[i].getSeccion());
+                            System.out.println("Docente: " + salones[i].getMaestro());
                         }
                     }
                    if(!salonVacio) {
@@ -41,31 +42,36 @@ public class Exposicion {
                         int selCambioInfo = Salon.validacion(1,2);
                         if(selCambioInfo == 2) {
                             System.out.println("Gracias por utilizar el sistema");
-                            continue;
+                            break;
                         }
                     }
 
-                    System.out.print("Ingrese el salon a editar(0-"+ (salones.length - 1) +" : ");
+                    System.out.print("Ingrese el salon a editar: ");
                     int salonActual = Salon.validacion(0,salones.length - 1);
 
                     System.out.print("Ingrese el numero de la seccion: ");
                     int seccion = Salon.validacion();
 
                     System.out.print("Ingrese el nombre del maestro: ");
-                    String maestro = sc.next();
+                    String maestro = sc.nextLine();
 
                     System.out.print("Ingrese la cantidad de estudiantes: ");
                     int cantidadAlumnos = Salon.validacion();
-                    Alumno[] alumnos = new Alumno[Salon.validacion()];
+                    Alumno[] alumnos = new Alumno[cantidadAlumnos];
 
                     for(int i = 0; i < cantidadAlumnos; i++) {
                         System.out.println("\nIngrese la informacion del estudiante en posicion #" + i);
                         System.out.print("Nombre: ");
-                        String nombre = sc.next();
+                        String nombre = sc.nextLine();
                         System.out.print("Edad: ");
                         int edad = Salon.validacion();
                         System.out.print("Promedio: ");
                         double promedio = sc.nextDouble();
+                        while(promedio < 0 || promedio > 100) {
+                            System.out.print("Promedio no valido, valor entre 0-100: ");
+                            promedio = sc.nextDouble();
+                        }
+                        sc.nextLine();
                         alumnos[i] = new Alumno(nombre,edad,promedio);
                     }
 
@@ -78,17 +84,23 @@ public class Exposicion {
                     }
                     System.out.println("-----Informacion de los salones-----\n\n");
                     for(int i = 0; i < cantidadSalones; i++) {
+                        System.out.println("\n--------Salon #" + i + "--------\n");
                         if(salones[i] == null) {
-                            System.out.println("---------------------------------");
                             System.out.println("Informacion incompleta del salon #" + i);
-                            System.out.println("---------------------------------");
+                            System.out.println("---------------------------------\n\n");
                             continue;
                         }
-                        System.out.println("------------------------------------");
-                        System.out.println("Salon #" + salones[i] );
-                        System.out.println(salones[i]);
-                        System.out.println("------------------------------------");
+                        else {
+                            System.out.println(salones[i]);
+                        }
+                        System.out.println("------------------------------------\n\n");
                     }
+                    break;
+                case 3:
+                    System.out.println("Gracias por usar");
+                    break;
+                default:
+                    System.out.println("Opcion no valida, intente de nuevo");
                     break;
             }
         } while(selMenu != 0); 
